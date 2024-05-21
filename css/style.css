@@ -83,6 +83,10 @@ body {
     align-items: center;
 }
 
+.hide {
+    display: none;
+}
+
 .start {
     font-family: "Poppins", sans-serif;
     font-size: 3rem;
