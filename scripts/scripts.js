@@ -31,6 +31,10 @@ function keyPressed(){
             console.log('Enter key pressed!');
             typedWord = inputValue.value;
             console.log(typedWord);
+            if(typedWord == rdmWord.textContent){
+                console.log("parola corretta!");
+                rdmWord.style.display = "none";
+            }
         }
     });
 }
