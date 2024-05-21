@@ -4,11 +4,13 @@ var rdmWord = document.getElementById("rndm-word");
 var inputValue = document.getElementById("inputWord");
 var typedWord;
 var n = Math.floor(Math.random() * words.length);
+var nrow = Math.floor(Math.random() * 10); 
 var playing = false;
 
 spawnedWord = words;
 
 console.log(spawnedWord[n]);
+console.log(nrow);
 
 function start(){
     startxt.classList.add("hide");
@@ -17,8 +19,10 @@ function start(){
 }
 
 function game(){
-    if(playing == true)
+    if(playing == true){
+        rdmWord.style.gridRowStart = nrow;
         rdmWord.textContent = spawnedWord[n];
+    }
 }
 
 function keyPressed(){

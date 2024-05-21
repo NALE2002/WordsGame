@@ -121,6 +121,6 @@ h2:hover {
 
 .spwn-words {
     position: relative;
-    grid-row-start: 4;
+    /* grid-row-start: 4; */
     font-size: 1.5rem;
 }
