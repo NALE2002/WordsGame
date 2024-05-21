@@ -6,11 +6,11 @@ var typedWord;
 var n = Math.floor(Math.random() * words.length);
 var nrow = Math.floor(Math.random() * 10); 
 var playing = false;
-
+var hearts = 3;
 spawnedWord = words;
 
-console.log(spawnedWord[n]);
-console.log(nrow);
+// console.log(spawnedWord[n]);
+// console.log(nrow);
 
 function start(){
     startxt.classList.add("hide");
@@ -27,13 +27,16 @@ function game(){
 
 function keyPressed(){
     inputValue.addEventListener('keydown',(event)=>{
-        if(event.key === 'Enter'){
+        if(event.key === 'Enter' && playing == true){
             console.log('Enter key pressed!');
             typedWord = inputValue.value;
             console.log(typedWord);
             if(typedWord == rdmWord.textContent){
                 console.log("parola corretta!");
                 rdmWord.style.display = "none";
+            }else{
+                console.log("parola errata!");
+                hearts--;
             }
         }
     });
