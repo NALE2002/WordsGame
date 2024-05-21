@@ -11,6 +11,7 @@ body {
     position: relative;
     background-color: #add2c9;
     height: 100vh;
+    font-family: "Poppins", sans-serif;
     color: black;
 }
 
@@ -25,7 +26,7 @@ body {
     width: 100%;
 }
 
-.grid {
+.content.grid {
     display: grid;
     max-width: 1600px;
     margin: 0 auto;
@@ -79,6 +80,11 @@ body {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 600;
     font-size: 3rem;
+    border: none;
+    outline: none;
+    background: none;
+    text-align: center;
+    border-bottom: 4px solid black;
 }
 
 .container-start {
@@ -96,9 +102,25 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 3rem;
     font-weight: 400;
+    z-index: 1000;
 }
 
 h2:hover {
     color: green;
     cursor: pointer;
+}
+
+.words.grid {
+    display: grid;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.spwn-words {
+    position: relative;
+    grid-row-start: 4;
+    font-size: 1.5rem;
 }

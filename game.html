@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Words game :D</title>
+    <title>Type game :D</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <div class="main">
-        <div class="grid">
+        <div class="content grid">
             <div class="container radius">
                 <div class="container-start" id="start-text">
                     <h2 class="start" onclick="start()">Start</h2>
                 </div>
-                <p class="spw-words"></p>
+                <div class="words grid">
+                    <p class="spwn-words" id="rndm-word"></p>
+                </div>
             </div>
             <div class="container rules">
                 <h1 class="text-h1">RULES</h1>
@@ -25,7 +27,8 @@
                 </p>
             </div>
             <div class="text-par">
-                <p class="text-game">Annodamacrop</p>
+                <!-- <p class="text-game">Annodamacrop</p> -->
+                <input type="text" name="" id="inputWord" class="text-game" onclick="keyPressed()">
             </div>
         </div>
     </div>
