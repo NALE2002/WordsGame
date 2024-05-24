@@ -125,7 +125,6 @@ h2:hover {
     font-size: 1.5rem;
     align-self: center;
     animation: word 4s linear infinite;
-    background-color: green;
 }
 
 @keyframes word {
