@@ -3,7 +3,6 @@ var startxt = document.getElementById("start-text");
 var inputValue = document.getElementById("inputWord");
 var p = document.createElement("p");
 var spawner = document.getElementById("wordSpawner").append(p);
-var test = document.createTextNode("oidocrop");
 var typedWord;
 var n = Math.floor(Math.random() * words.length);
 var nrow = Math.floor(Math.random() * 10); 

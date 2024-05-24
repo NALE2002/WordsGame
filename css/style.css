@@ -124,7 +124,7 @@ h2:hover {
     position: relative;
     font-size: 1.5rem;
     align-self: center;
-    animation: word 4s linear infinite;
+    animation: word 4s linear;
 }
 
 @keyframes word {
