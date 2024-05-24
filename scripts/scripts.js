@@ -1,7 +1,9 @@
 var words = ["gatto","cane","calcio","pallavolo","sport","cibo","pizza"];  //7
 var startxt = document.getElementById("start-text");
-var rdmWord = document.getElementById("rndm-word");
 var inputValue = document.getElementById("inputWord");
+var p = document.createElement("p");
+var spawner = document.getElementById("wordSpawner").append(p);
+var test = document.createTextNode("oidocrop");
 var typedWord;
 var n = Math.floor(Math.random() * words.length);
 var nrow = Math.floor(Math.random() * 10); 
@@ -9,8 +11,6 @@ var playing = false;
 var hearts = 3;
 spawnedWord = words;
 
-// console.log(spawnedWord[n]);
-// console.log(nrow);
 
 function start(){
     startxt.classList.add("hide");
@@ -20,8 +20,11 @@ function start(){
 
 function game(){
     if(playing == true){
-        rdmWord.style.gridRowStart = nrow;
-        rdmWord.textContent = spawnedWord[n];
+        p;
+        p.classList.add("spwn-words");
+        p.style.gridRowStart = nrow;
+        p.textContent = spawnedWord[n];
+        console.log(p);
     }
 }
 
@@ -30,14 +33,8 @@ function keyPressed(){
         if(event.key === 'Enter' && playing == true){
             console.log('Enter key pressed!');
             typedWord = inputValue.value;
-            console.log(typedWord);
-            if(typedWord == rdmWord.textContent){
-                console.log("parola corretta!");
-                rdmWord.style.display = "none";
-            }else{
-                console.log("parola errata!");
-                hearts--;
-            }
         }
     });
 }
+
+
