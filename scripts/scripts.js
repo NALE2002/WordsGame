@@ -15,10 +15,10 @@ spawnedWord = words;
 function start(){
     startxt.classList.add("hide");
     playing = true;
-    game();
+    generateWord();
 }
 
-function game(){
+function generateWord(){
     if(playing == true){
         p;
         p.classList.add("spwn-words");

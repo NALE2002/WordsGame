@@ -43,6 +43,7 @@ body {
     margin-top: 12rem;
     border-radius: 2.5rem;
     background-color: #faf9f9;
+    overflow: hidden;
 }
 
 .container.rules {
@@ -112,7 +113,7 @@ h2:hover {
 
 .words.grid {
     display: grid;
-    position: absolute;
+    position: relative;
     height: 100%;
     width: 100%;
     top: 0;
@@ -122,4 +123,16 @@ h2:hover {
 .spwn-words {
     position: relative;
     font-size: 1.5rem;
+    align-self: center;
+    animation: word 4s linear infinite;
+    background-color: green;
+}
+
+@keyframes word {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(100%, 0);
+    }
 }
