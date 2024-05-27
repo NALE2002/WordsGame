@@ -13,9 +13,6 @@ var correctWord = false;
 var wordsGuessedRight = 0;
 //clearTimeout(intervalId); servira' per generare parole piu' fast ;) 
 
-/*fixare funzione randomrow in modo che 
-non possa spawnare una parola sulla stessa riga*/ 
-
 
 
 function startGame(){
@@ -93,11 +90,11 @@ function endGame(){
 function randomWord(){ 
     var n = Math.floor(Math.random() * words.length);
     var allTags_words = document.querySelectorAll(".spwn-words");
-    // console.log("parola iniziale: ",words[n]);
+    // console.log("initial word: ",words[n]);
     allTags_words.forEach(allTag_word => {
         while(allTag_word.textContent == words[n]){
             n = Math.floor(Math.random() * words.length);
-            // console.log("parola finale: ",words[n]);
+            // console.log("final word: ",words[n]);
         }
     });
     return words[n];
