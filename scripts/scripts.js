@@ -1,4 +1,5 @@
-var words = ["gatto","cane","calcio","pallavolo","sport","cibo","pizza"];  //7
+var words = ["gatto","cane","calcio","pallavolo","sport","cibo","pizza",
+"divertente","palestra","perfetto","random","mongolfiera","videogiochi","animali","punta","adrenalina"];  //7
 var startxt = document.getElementById("start-text"); //"start" text at the beginning of the page/game
 var inputValue = document.getElementById("inputWord"); //input for the words to write
 var wordSpawner = document.getElementById("wordSpawner"); //container of the words
@@ -9,6 +10,7 @@ var intervalID; //decides how many seconds for a new word
 var countDown; //countdown after clkicking the "start"
 var hp = 3; //how many lifes you have before losing
 var correctWord = false;
+var wordsGuessedRight = 0;
 //clearTimeout(intervalId); servira' per generare parole piu' fast ;) 
 
 /*fixare funzione randomrow in modo che 
@@ -28,6 +30,7 @@ function startGame(){
 function gameLoop(){
     if(playing){
         generateWord();
+        //mettere qui condizione per guessedwordright :D
         intervalID = setTimeout(gameLoop,2000); //generates a word every 2 seconds
     }
     console.log("current hp: ",hp);
@@ -52,6 +55,7 @@ function checkWord(word){
         if(allWord.textContent === word){
             wordSpawner.removeChild(allWord);
             correctWord = true;
+            wordsGuessedRight++;
         }
     }); 
 }
@@ -88,17 +92,25 @@ function endGame(){
 
 function randomWord(){ 
     var n = Math.floor(Math.random() * words.length);
+    var allTags_words = document.querySelectorAll(".spwn-words");
+    // console.log("parola iniziale: ",words[n]);
+    allTags_words.forEach(allTag_word => {
+        while(allTag_word.textContent == words[n]){
+            n = Math.floor(Math.random() * words.length);
+            // console.log("parola finale: ",words[n]);
+        }
+    });
     return words[n];
 }
 
 function randomRow(){
     var nrow = Math.floor(Math.random() * 10) + 1;
-    var checkRows = document.querySelectorAll(".spwn-words");
-    // console.log("initial nrow",nrow);
-    checkRows.forEach(checkRow =>{
-        while(checkRow.style.gridRowStart == nrow){
+    var allTags_rows = document.querySelectorAll(".spwn-words");
+    // console.log("initial nrow: ",a);
+    allTags_rows.forEach(allTag_row =>{ 
+        while(allTag_row.style.gridRowStart == nrow){ 
             nrow = Math.floor(Math.random() * 10) + 1;
-            // console.log("changed nrow: ",nrow);
+            // console.log("changed nrow: ",a);
         }
     });
     return nrow;
