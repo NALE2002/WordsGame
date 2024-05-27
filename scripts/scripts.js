@@ -4,15 +4,13 @@ var startxt = document.getElementById("start-text"); //"start" text at the begin
 var inputValue = document.getElementById("inputWord"); //input for the words to write
 var wordSpawner = document.getElementById("wordSpawner"); //container of the words
 var starth2 = document.getElementById("starth2");
-var typedWord; //typed word XD
+var typedWord; //typed word 
 var playing = false; //current state of the game: if its currently playing or not
 var intervalID; //decides how many seconds for a new word
-var countDown; //countdown after clkicking the "start"
+var countDown; //countdown after clicking the "start"
 var hp = 3; //how many lifes you have before losing
 var correctWord = false;
 var wordsGuessedRight = 0;
-//clearTimeout(intervalId); servira' per generare parole piu' fast ;) 
-
 
 
 function startGame(){
@@ -27,10 +25,14 @@ function startGame(){
 function gameLoop(){
     if(playing){
         generateWord();
-        //mettere qui condizione per guessedwordright :D
-        intervalID = setTimeout(gameLoop,2000); //generates a word every 2 seconds
+        if(wordsGuessedRight <= 10)
+            intervalID = setTimeout(gameLoop,2000); //generates a word every 2 seconds
+        if(wordsGuessedRight <=20 && wordsGuessedRight > 10)
+            intervalID = setTimeout(gameLoop,1500);
+        if(wordsGuessedRight <=30 && wordsGuessedRight > 20)
+            intervalID = setTimeout(gameLoop,1000);
     }
-    console.log("current hp: ",hp);
+    // console.log("current hp: ",hp);
     endGame();
 }
 
@@ -53,6 +55,7 @@ function checkWord(word){
             wordSpawner.removeChild(allWord);
             correctWord = true;
             wordsGuessedRight++;
+            // console.log("parole corrette: ",wordsGuessedRight);
         }
     }); 
 }
