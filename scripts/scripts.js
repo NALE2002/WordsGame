@@ -8,8 +8,12 @@ var playing = false; //current state of the game: if its currently playing or no
 var intervalID; //decides how many seconds for a new word
 var countDown; //countdown after clkicking the "start"
 var hp = 3; //how many lifes you have before losing
+var correctWord = false;
+//clearTimeout(intervalId); servira' per generare parole piu' fast ;) 
 
-//aggiungere sistema input 
+/*fixare funzione randomrow in modo che 
+non possa spawnare una parola sulla stessa riga*/ 
+
 
 
 function startGame(){
@@ -33,11 +37,24 @@ function gameLoop(){
 function handleEvent(event){
     if(event.key === 'Enter' && playing){
         typedWord = inputValue.value; 
-        console.log("parola scritta :", typedWord);
+        // console.log("parola scritta :", typedWord);
+        checkWord(typedWord);
+        if(correctWord){
+            inputValue.value = '';
+            correctWord = false;
+        }
     }
 }
     
-
+function checkWord(word){
+    var allWords = document.querySelectorAll(".spwn-words");
+    allWords.forEach((allWord) => {
+        if(allWord.textContent === word){
+            wordSpawner.removeChild(allWord);
+            correctWord = true;
+        }
+    }); 
+}
 
 function generateWord(){
     var p = document.createElement('p');
@@ -51,7 +68,7 @@ function generateWord(){
             wordSpawner.removeChild(p);
             hp--;
         }
-    }, 4000); //cancella parola dopo 4 secondi
+    }, 4000); //removes word after 4 seconds
     
 }
 
@@ -61,10 +78,11 @@ function endGame(){
         while(wordSpawner.firstChild){
             wordSpawner.firstChild.remove();
         }
-        var gameOver = document.createElement('h2');
+        var gameOver = document.createElement('h3');
         gameOver.classList.add("info-text");
         gameOver.textContent = 'Game Over :C';
         startxt.appendChild(gameOver);
+        inputValue.removeEventListener('keydown', handleEvent);
     }
 }
 
