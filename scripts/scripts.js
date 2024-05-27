@@ -93,5 +93,13 @@ function randomWord(){
 
 function randomRow(){
     var nrow = Math.floor(Math.random() * 10) + 1;
+    var checkRows = document.querySelectorAll(".spwn-words");
+    // console.log("initial nrow",nrow);
+    checkRows.forEach(checkRow =>{
+        while(checkRow.style.gridRowStart == nrow){
+            nrow = Math.floor(Math.random() * 10) + 1;
+            // console.log("changed nrow: ",nrow);
+        }
+    });
     return nrow;
 }
