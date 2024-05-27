@@ -6,6 +6,7 @@ var wordSpawner = document.getElementById("wordSpawner");
 var typedWord; 
 var playing = false;
 var intervalID;
+var hp = 3;
 
 
 function startGame(){
@@ -13,7 +14,15 @@ function startGame(){
     playing = true;
     inputValue.focus();
     gameLoop();
+    endGame();
     inputValue.addEventListener('keydown',handleEvent);
+}
+
+function gameLoop(){
+    if(playing){
+        generateWord();
+        intervalID = setTimeout(gameLoop(),2000);
+    }
 }
 
 function generateWord(){
@@ -26,6 +35,7 @@ function generateWord(){
     setTimeout(() => {
         if (wordSpawner.contains(p)) {
             wordSpawner.removeChild(p);
+            hp--;
         }
     }, 4000); // Rimuove la parola dopo 4 secondi (tempo dell'animazione)
 }
@@ -39,24 +49,28 @@ function handleEvent(event){
 }
 
 function checkTypedWord(word){
-    if(typedWord === word)
+    // if(typedWord === word)
+
         
 }
 
 function randomWord(){
     var n = Math.floor(Math.random() * words.length);
-    return spawnedWord[n];
+    return words[n];
 }
 
 function randomRow(){
-    var nrow = Math.floor(Math.random() * 10);
+    var nrow = Math.floor(Math.random() * 10) + 1;
     return nrow;
 }
 
-function gameLoop(){
-    if(playing){
-        generateWord();
-        setTimeout(gameLoop(),2000);
+function endGame(){
+    if(hp == 0){ 
+        while(wordSpawner.firstChild){
+            wordSpawner.firstChild.remove();
+        }
+        playing = false;
+        clearTimeout(intervalId);
+        inputValue.removeEventListener('keydown', handleKeyPress);
     }
 }
-
