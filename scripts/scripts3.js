@@ -2,6 +2,7 @@ var words = ["gatto","cane","calcio","pallavolo","sport","cibo","pizza"];  //7
 var startxt = document.getElementById("start-text"); //"start" text at the beginning of the page/game
 var inputValue = document.getElementById("inputWord"); //input for the words to write
 var wordSpawner = document.getElementById("wordSpawner"); //container of the words
+var starth2 = document.getElementById("starth2");
 var typedWord; //typed word XD
 var playing = false; //current state of the game: if its currently playing or not
 var intervalID; //decides how many seconds for a new word
@@ -13,7 +14,7 @@ var hp = 3; //how many lifes you have before losing
 
 
 function startGame(){
-    startxt.remove();
+    startxt.removeChild(starth2);
     playing = true;
     inputValue.focus();
     gameLoop();
@@ -25,7 +26,7 @@ function gameLoop(){
         generateWord();
         intervalID = setTimeout(gameLoop,2000); //generates a word every 2 seconds
     }
-    console.log(hp)
+    console.log("current hp: ",hp);
     endGame();
 }
 
@@ -46,12 +47,16 @@ function generateWord(){
 }
 
 function endGame(){
-    if(hp == 0){
+    console.log("hp test: ",hp);
+    if(hp === 0 && playing){
         playing = false;
         while(wordSpawner.firstChild){
             wordSpawner.firstChild.remove();
         }
-       
+        var gameOver = document.createElement('h2');
+        gameOver.classList.add("info-text");
+        gameOver.textContent = 'Game Over :C';
+        startxt.appendChild(gameOver);
     }
 }
 

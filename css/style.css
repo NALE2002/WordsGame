@@ -99,7 +99,7 @@ body {
     display: none;
 }
 
-.start {
+.info-text {
     font-family: "Poppins", sans-serif;
     font-size: 3rem;
     font-weight: 400;
@@ -113,7 +113,7 @@ h2:hover {
 
 .words.grid {
     display: grid;
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
