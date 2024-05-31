@@ -13,7 +13,7 @@ var correctWord = false;
 var wordsGuessedRight = 0;
 
 //Aggiungere hp a schermo e wordsguessedright
-//aggiungere tasto try again sotto game over 
+//aggiungere tasto try again sotto game over XXXXXX fatto
 //fine
 
 
@@ -23,7 +23,6 @@ function startGame(){
     inputValue.focus();
     gameLoop();
     inputValue.addEventListener('keydown',handleEvent);
-
 }
 
 function gameLoop(){
@@ -88,7 +87,14 @@ function endGame(){
         gameOver.classList.add("info-text");
         gameOver.textContent = 'Game Over :C';
         startxt.appendChild(gameOver);
-        
+
+        var restartBtn = document.createElement('button');
+        restartBtn.textContent = 'Try again';
+        restartBtn.classList.add("btn-try-agn");
+        restartBtn.onclick = function(){
+            location.reload();
+        }
+        startxt.appendChild(restartBtn);
 
         inputValue.removeEventListener('keydown', handleEvent);
     }

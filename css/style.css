@@ -93,6 +93,7 @@ body {
     height: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .hide {
@@ -106,7 +107,23 @@ body {
     z-index: 1000;
 }
 
+.btn-try-agn {
+    position: relative;
+    z-index: 1200;
+    border: none;
+    font-size: 2.8rem;
+    font-weight: 400;
+    background: none;
+    color: #212A3E;
+    margin-top: 1rem;
+}
+
 h2:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+button:hover {
     color: gray;
     cursor: pointer;
 }
@@ -122,7 +139,7 @@ h2:hover {
 
 .spwn-words {
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     align-self: center;
     animation: word 4s linear;
 }
