@@ -12,6 +12,10 @@ var hp = 3; //how many lifes you have before losing
 var correctWord = false;
 var wordsGuessedRight = 0;
 
+//Aggiungere hp a schermo e wordsguessedright
+//aggiungere tasto try again sotto game over 
+//fine
+
 
 function startGame(){
     startxt.removeChild(starth2);
@@ -25,15 +29,11 @@ function startGame(){
 function gameLoop(){
     if(playing){
         generateWord();
-        if(wordsGuessedRight <= 10)
-            intervalID = setTimeout(gameLoop,2000); //generates a word every 2 seconds
-        if(wordsGuessedRight <=20 && wordsGuessedRight > 10)
-            intervalID = setTimeout(gameLoop,1500);
-        if(wordsGuessedRight <=30 && wordsGuessedRight > 20)
-            intervalID = setTimeout(gameLoop,1000);
+        let interval = 2000;
+        if(wordsGuessedRight > 10) interval = 1500;
+        if(wordsGuessedRight > 20) interval = 1000;
+        setTimeout(gameLoop, interval);
     }
-    // console.log("current hp: ",hp);
-    endGame();
 }
 
 function handleEvent(event){
@@ -55,7 +55,7 @@ function checkWord(word){
             wordSpawner.removeChild(allWord);
             correctWord = true;
             wordsGuessedRight++;
-            // console.log("parole corrette: ",wordsGuessedRight);
+            console.log("parole corrette: ",wordsGuessedRight);
         }
     }); 
 }
@@ -71,6 +71,8 @@ function generateWord(){
         if(wordSpawner.contains(p)){
             wordSpawner.removeChild(p);
             hp--;
+            if(hp === 0)
+                endGame();
         }
     }, 4000); //removes word after 4 seconds
     
@@ -86,6 +88,8 @@ function endGame(){
         gameOver.classList.add("info-text");
         gameOver.textContent = 'Game Over :C';
         startxt.appendChild(gameOver);
+        
+
         inputValue.removeEventListener('keydown', handleEvent);
     }
 }
