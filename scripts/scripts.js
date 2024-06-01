@@ -13,7 +13,7 @@ var correctWord = false;
 var wordsGuessedRight = 0;
 
 //Aggiungere hp a schermo e wordsguessedright
-//aggiungere tasto try again sotto game over XXXXXX fatto
+//Aggiungere altre parole magari in inglese
 //fine
 
 
